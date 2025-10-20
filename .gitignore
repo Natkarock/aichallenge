@@ -1,0 +1,98 @@
+# =========================
+# Python general
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+.venv*/
+Pipfile.lock
+poetry.lock
+
+# Byte-compiled / optimized / DLL files
+*.so
+*.dll
+*.dylib
+*.pyd
+*.pyc
+
+# Jupyter / IPython
+.ipynb_checkpoints
+*.ipynb
+
+# Logs and temp files
+*.log
+*.out
+*.tmp
+*.swp
+*.swo
+*.bak
+*.orig
+
+# Cache
+.cache/
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+.tox/
+.mypy_cache/
+.dmypy.json
+.pyre/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Compiled translations
+*.mo
+
+# Distribution / packaging
+MANIFEST
+*.manifest
+*.spec
+
+# Editor and IDE configs
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# macOS / Windows system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Environments and credentials
+.env
+.env.*
+*.env
+*.key
+*.pem
+*.cert
+*.crt
+
+# User uploads / temp data
+data/
+tmp/
+logs/
+examples/
+
+# VS Code local settings
+.vscode/
+.history/
+*.code-workspace
+
+# Notebooks / Reports
+reports/
+.ipynb_checkpoints/
+
+# Project specific
+designer_agent_refactored.zip
