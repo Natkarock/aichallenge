@@ -99,7 +99,6 @@ with st.sidebar.expander("MCP diagnostics"):
             ],
             "tools": [ build_openlibrary_mcp_tool(["get_book_by_title"]) ],
             "tool_choice": "auto",
-            "max_output_tokens": 50,
         }
         try:
             resp = _post(payload)

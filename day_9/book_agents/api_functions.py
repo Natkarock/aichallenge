@@ -73,9 +73,15 @@ def build_openlibrary_mcp_tool(allowed_tools: List[str] = None) -> Dict[str, Any
     #     'server_url': MCP_SERVER_URL,
     #     'require_approval': 'never',
     # }
+    # return  {
+    #   "type": "mcp",
+    #   "server_label": "deepwiki",
+    #   "server_url": "https://mcp.deepwiki.com/mcp",
+    #   "require_approval": "never",
+    # }
     return  {
       "type": "mcp",
-      "server_label": "deepwiki",
-      "server_url": "https://mcp.deepwiki.com/mcp",
+      "server_label": "match_mcp",
+      "server_url": "https://mcpserver-yakvenalex.amvera.io/mcp",
       "require_approval": "never",
     }
