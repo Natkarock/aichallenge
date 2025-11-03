@@ -1,39 +1,56 @@
 from __future__ import annotations
-
 from typing import List, Tuple
-
 import numpy as np
 from rich.console import Console
 from rich.progress import Progress, SpinnerColumn, BarColumn, TextColumn, TimeElapsedColumn
 from openai import OpenAI
-
 from .utils import DocChunk, cosine_sim
+from .cache import EmbeddingCache
 
 console = Console()
 
 class Retriever:
-    def __init__(self, client: OpenAI, embed_model: str):
+    def __init__(self, client: OpenAI, embed_model: str, cache: EmbeddingCache | None = None):
         self.client = client
         self.embed_model = embed_model
+        self.cache = cache
 
     def embed_chunks(self, chunks: List[DocChunk]) -> None:
+        pending = []
+        for c in chunks:
+            if self.cache:
+                vec = self.cache.get(c.path, c.idx, c.text)
+                if vec is not None:
+                    c.vector = np.array(vec, dtype=np.float32)
+                    continue
+            pending.append(c)
+
+        if not pending:
+            return
+
         with Progress(
             SpinnerColumn(),
-            TextColumn("[bold]Создаю эмбеддинги[/]"),
+            TextColumn("[bold]Создаю эмбеддинги[/] (кэшируем)"),
             BarColumn(),
             TextColumn("{task.completed}/{task.total}"),
             TimeElapsedColumn(),
             console=console,
         ) as progress:
-            task = progress.add_task("emb", total=len(chunks))
+            task = progress.add_task("emb", total=len(pending))
             batch_size = 16
-            for i in range(0, len(chunks), batch_size):
-                batch = chunks[i : i + batch_size]
+            to_store = []
+            for i in range(0, len(pending), batch_size):
+                batch = pending[i : i + batch_size]
                 inputs = [c.text for c in batch]
                 emb = self.client.embeddings.create(model=self.embed_model, input=inputs)
                 for j, c in enumerate(batch):
-                    c.vector = np.array(emb.data[j].embedding, dtype=np.float32)
+                    vec = np.array(emb.data[j].embedding, dtype=np.float32)
+                    c.vector = vec
+                    if self.cache:
+                        to_store.append((c.path, c.idx, c.text, vec.tolist()))
                 progress.update(task, advance=len(batch))
+            if self.cache and to_store:
+                self.cache.put_many(to_store)
 
     def query(self, chunks: List[DocChunk], question: str, top_k: int) -> List[DocChunk]:
         q = self.client.embeddings.create(model=self.embed_model, input=[question]).data[0].embedding

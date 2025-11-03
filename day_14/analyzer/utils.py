@@ -9,15 +9,29 @@ from typing import List
 import numpy as np
 
 TEXT_EXT_HINTS = {
-    # code / scripts
     ".kt", ".kts", ".java", ".groovy", ".gradle", ".gradle.kts",
     ".py", ".js", ".ts", ".tsx", ".jsx", ".sh", ".bash", ".zsh",
     ".c", ".h", ".cpp", ".hpp", ".cc", ".hh", ".rs", ".go", ".rb", ".php",
     ".swift", ".cs", ".m", ".mm",
-    # markup / config / docs / data
     ".xml", ".html", ".xhtml", ".svg", ".css", ".scss", ".md", ".rst",
     ".json", ".yml", ".yaml", ".toml", ".ini", ".properties", ".cfg",
     ".pro", ".txt", ".csv", ".tsv", ".ipynb",
+}
+
+DEFAULT_EXCLUDE_DIRS = {
+    ".git", ".svn", ".hg",
+    ".idea", ".vscode",
+    "build", ".gradle", ".gradle-kotlin-dsl",
+    "node_modules", "dist", "out", "target",
+    "__pycache__", ".mypy_cache", ".ruff_cache",
+    "venv", ".venv", "env", ".env",
+}
+
+LOCKFILE_BASENAMES = {
+    "yarn.lock","package-lock.json","pnpm-lock.yaml","bun.lockb",
+    "poetry.lock","Cargo.lock","Pipfile.lock","Gemfile.lock",
+    "composer.lock","go.sum","gradle-lockfile","Podfile.lock",
+    "project.pbxproj","gradlew",
 }
 
 def is_probably_text(path: Path, sample_bytes: int = 8192) -> bool:

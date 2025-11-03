@@ -1,31 +1,12 @@
 from __future__ import annotations
-
 from pathlib import Path
-from typing import List
-
+from typing import List, Dict
 from rich.console import Console
 from rich.progress import Progress, SpinnerColumn, BarColumn, TextColumn, TimeElapsedColumn
 from pathspec import PathSpec
-
-from .utils import is_probably_text, fast_head_text, safe_chunk_text, DocChunk, binary_meta_chunk
+from .utils import is_probably_text, fast_head_text, safe_chunk_text, DocChunk, binary_meta_chunk, DEFAULT_EXCLUDE_DIRS, LOCKFILE_BASENAMES
 
 console = Console()
-
-DEFAULT_EXCLUDE_DIRS = {
-    ".git", ".svn", ".hg",
-    ".idea", ".vscode",
-    "build", ".gradle", ".gradle-kotlin-dsl",
-    "node_modules", "dist", "out", "target",
-    "__pycache__", ".mypy_cache", ".ruff_cache",
-    "venv", ".venv", "env", ".env",
-}
-
-LOCKFILE_BASENAMES = {
-    "yarn.lock","package-lock.json","pnpm-lock.yaml","bun.lockb",
-    "poetry.lock","Cargo.lock","Pipfile.lock","Gemfile.lock",
-    "composer.lock","go.sum","gradle-lockfile","Podfile.lock",
-    "project.pbxproj","gradlew",
-}
 
 def load_gitignore_spec(root: Path) -> PathSpec | None:
     gi = root / ".gitignore"
@@ -153,3 +134,16 @@ class ProjectIndexer:
             if len(self.skipped) > 80:
                 console.print(f"  ... и ещё {len(self.skipped)-80}")
         return chunks
+
+    def detect_modules(self, chunks: list[DocChunk]) -> dict[str, list[DocChunk]]:
+        modules: dict[str, list[DocChunk]] = {}
+        for ch in chunks:
+            path = Path(ch.path)
+            rel = path.relative_to(self.root)
+            parts = rel.parts
+            if len(parts) == 1:
+                key = "root_files"
+            else:
+                key = parts[0]
+            modules.setdefault(key, []).append(ch)
+        return modules
