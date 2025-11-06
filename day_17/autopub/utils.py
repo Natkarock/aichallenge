@@ -25,12 +25,17 @@ def remove_stopwords(text: str) -> str:
         out.append(t)
     return " ".join(out)
 
-def read_text_safe(p: Path, limit_chars: int = 20000) -> str:
+def is_probably_text(path: Path, sample_bytes: int = 8192) -> bool:
     try:
-        s = p.read_text(encoding="utf-8", errors="ignore")
-        return s[:limit_chars]
+        with path.open("rb") as f:
+            chunk = f.read(sample_bytes)
     except Exception:
-        return ""
+        return False
+    if b"\x00" in chunk:
+        return False
+    printable = sum(32 <= b <= 126 or b in (9, 10, 13) for b in chunk)
+    ratio = printable / (len(chunk) or 1)
+    return ratio > 0.8
 
 def glob_many(root: Path, patterns: Iterable[str]) -> List[Path]:
     res: List[Path] = []
