@@ -1,0 +1,7 @@
+openai>=1.54.0
+rich>=13.9.4
+beautifulsoup4>=4.12.3
+pathspec>=0.12.1
+python-slugify>=8.0.4
+requests>=2.32.3
+pyyaml>=6.0.2
