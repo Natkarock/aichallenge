@@ -2,15 +2,24 @@ from __future__ import annotations
 from typing import List, Tuple
 import numpy as np
 from rich.console import Console
-from rich.progress import Progress, SpinnerColumn, BarColumn, TextColumn, TimeElapsedColumn
+from rich.progress import (
+    Progress,
+    SpinnerColumn,
+    BarColumn,
+    TextColumn,
+    TimeElapsedColumn,
+)
 from openai import OpenAI
 from .utils import DocChunk, cosine_sim
 from .cache import EmbeddingCache
 
 console = Console()
 
+
 class Retriever:
-    def __init__(self, client: OpenAI, embed_model: str, cache: EmbeddingCache | None = None):
+    def __init__(
+        self, client: OpenAI, embed_model: str, cache: EmbeddingCache | None = None
+    ):
         self.client = client
         self.embed_model = embed_model
         self.cache = cache
@@ -42,7 +51,12 @@ class Retriever:
             for i in range(0, len(pending), batch_size):
                 batch = pending[i : i + batch_size]
                 inputs = [c.text for c in batch]
-                emb = self.client.embeddings.create(model=self.embed_model, input=inputs)
+                try:
+                    emb = self.client.embeddings.create(
+                        model=self.embed_model, input=inputs
+                    )
+                except Exception:
+                    continue
                 for j, c in enumerate(batch):
                     vec = np.array(emb.data[j].embedding, dtype=np.float32)
                     c.vector = vec
@@ -52,8 +66,14 @@ class Retriever:
             if self.cache and to_store:
                 self.cache.put_many(to_store)
 
-    def query(self, chunks: List[DocChunk], question: str, top_k: int) -> List[DocChunk]:
-        q = self.client.embeddings.create(model=self.embed_model, input=[question]).data[0].embedding
+    def query(
+        self, chunks: List[DocChunk], question: str, top_k: int
+    ) -> List[DocChunk]:
+        q = (
+            self.client.embeddings.create(model=self.embed_model, input=[question])
+            .data[0]
+            .embedding
+        )
         q_vec = np.array(q, dtype=np.float32)
 
         sims: List[Tuple[int, float]] = []
