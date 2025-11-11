@@ -1,0 +1,121 @@
+{
+  "files": [
+    {
+      "file_id": "3cf17839-bf54-497d-ba06-ba7d04da5a78",
+      "name": "tz_recipes.txt",
+      "chunk_ids": [
+        "3cf17839-bf54-497d-ba06-ba7d04da5a78:0",
+        "3cf17839-bf54-497d-ba06-ba7d04da5a78:1",
+        "3cf17839-bf54-497d-ba06-ba7d04da5a78:2"
+      ],
+      "num_chunks": 3,
+      "added_at": "2025-11-11T16:05:52.283907Z"
+    },
+    {
+      "file_id": "385e665d-5099-4178-8d82-970777bf87d7",
+      "name": "random_people.xlsx",
+      "chunk_ids": [
+        "385e665d-5099-4178-8d82-970777bf87d7:0",
+        "385e665d-5099-4178-8d82-970777bf87d7:1",
+        "385e665d-5099-4178-8d82-970777bf87d7:2",
+        "385e665d-5099-4178-8d82-970777bf87d7:3",
+        "385e665d-5099-4178-8d82-970777bf87d7:4",
+        "385e665d-5099-4178-8d82-970777bf87d7:5",
+        "385e665d-5099-4178-8d82-970777bf87d7:6",
+        "385e665d-5099-4178-8d82-970777bf87d7:7",
+        "385e665d-5099-4178-8d82-970777bf87d7:8",
+        "385e665d-5099-4178-8d82-970777bf87d7:9",
+        "385e665d-5099-4178-8d82-970777bf87d7:10",
+        "385e665d-5099-4178-8d82-970777bf87d7:11",
+        "385e665d-5099-4178-8d82-970777bf87d7:12"
+      ],
+      "num_chunks": 13,
+      "added_at": "2025-11-11T17:20:58.205036Z"
+    },
+    {
+      "file_id": "e4ba374f-50d6-49ac-8a4b-e21ff8c934af",
+      "name": "rag_store.py",
+      "chunk_ids": [
+        "e4ba374f-50d6-49ac-8a4b-e21ff8c934af:0",
+        "e4ba374f-50d6-49ac-8a4b-e21ff8c934af:1"
+      ],
+      "num_chunks": 2,
+      "added_at": "2025-11-11T17:32:49.723822Z"
+    },
+    {
+      "file_id": "9974e195-5cc8-483d-a875-c5340decbcec",
+      "name": "README-4.md",
+      "chunk_ids": [
+        "9974e195-5cc8-483d-a875-c5340decbcec:0",
+        "9974e195-5cc8-483d-a875-c5340decbcec:1",
+        "9974e195-5cc8-483d-a875-c5340decbcec:2",
+        "9974e195-5cc8-483d-a875-c5340decbcec:3",
+        "9974e195-5cc8-483d-a875-c5340decbcec:4",
+        "9974e195-5cc8-483d-a875-c5340decbcec:5"
+      ],
+      "num_chunks": 6,
+      "added_at": "2025-11-11T17:32:51.363428Z"
+    },
+    {
+      "file_id": "a3d801b6-0f63-4ace-8b86-180c63fc23f5",
+      "name": "main-5.py",
+      "chunk_ids": [
+        "a3d801b6-0f63-4ace-8b86-180c63fc23f5:0",
+        "a3d801b6-0f63-4ace-8b86-180c63fc23f5:1",
+        "a3d801b6-0f63-4ace-8b86-180c63fc23f5:2",
+        "a3d801b6-0f63-4ace-8b86-180c63fc23f5:3",
+        "a3d801b6-0f63-4ace-8b86-180c63fc23f5:4",
+        "a3d801b6-0f63-4ace-8b86-180c63fc23f5:5",
+        "a3d801b6-0f63-4ace-8b86-180c63fc23f5:6",
+        "a3d801b6-0f63-4ace-8b86-180c63fc23f5:7",
+        "a3d801b6-0f63-4ace-8b86-180c63fc23f5:8",
+        "a3d801b6-0f63-4ace-8b86-180c63fc23f5:9",
+        "a3d801b6-0f63-4ace-8b86-180c63fc23f5:10"
+      ],
+      "num_chunks": 11,
+      "added_at": "2025-11-11T17:32:52.047145Z"
+    },
+    {
+      "file_id": "9a136d1c-be74-40af-ae11-c0afe9f77aa1",
+      "name": "random_people.xlsx",
+      "chunk_ids": [
+        "9a136d1c-be74-40af-ae11-c0afe9f77aa1:0",
+        "9a136d1c-be74-40af-ae11-c0afe9f77aa1:1",
+        "9a136d1c-be74-40af-ae11-c0afe9f77aa1:2",
+        "9a136d1c-be74-40af-ae11-c0afe9f77aa1:3",
+        "9a136d1c-be74-40af-ae11-c0afe9f77aa1:4",
+        "9a136d1c-be74-40af-ae11-c0afe9f77aa1:5",
+        "9a136d1c-be74-40af-ae11-c0afe9f77aa1:6",
+        "9a136d1c-be74-40af-ae11-c0afe9f77aa1:7",
+        "9a136d1c-be74-40af-ae11-c0afe9f77aa1:8",
+        "9a136d1c-be74-40af-ae11-c0afe9f77aa1:9",
+        "9a136d1c-be74-40af-ae11-c0afe9f77aa1:10",
+        "9a136d1c-be74-40af-ae11-c0afe9f77aa1:11",
+        "9a136d1c-be74-40af-ae11-c0afe9f77aa1:12"
+      ],
+      "num_chunks": 13,
+      "added_at": "2025-11-11T17:32:52.506758Z"
+    },
+    {
+      "file_id": "3783d416-72a2-49c8-b755-3b08dbf203c9",
+      "name": "tz_recipes.txt",
+      "chunk_ids": [
+        "3783d416-72a2-49c8-b755-3b08dbf203c9:0",
+        "3783d416-72a2-49c8-b755-3b08dbf203c9:1",
+        "3783d416-72a2-49c8-b755-3b08dbf203c9:2"
+      ],
+      "num_chunks": 3,
+      "added_at": "2025-11-11T17:32:53.410265Z"
+    },
+    {
+      "file_id": "d3f03837-f6aa-40b9-90d5-166574ddf112",
+      "name": "rag_store.py",
+      "chunk_ids": [
+        "d3f03837-f6aa-40b9-90d5-166574ddf112:0",
+        "d3f03837-f6aa-40b9-90d5-166574ddf112:1"
+      ],
+      "num_chunks": 2,
+      "added_at": "2025-11-11T17:32:53.818230Z"
+    }
+  ]
+}
