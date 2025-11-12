@@ -1,0 +1,5 @@
+openai>=1.54.0
+rich>=13.9.4
+numpy>=2.1.2
+pathspec>=0.12.1
+cohere>=5.5.0
